@@ -70,28 +70,17 @@ get_initial_penalty<-function(X_all,n_tis,single_initial_est_all,single_initial_
     w.src<-single_initial_est_all[,-t,drop=FALSE]
     beta<-single_initial_est_all[,t,drop=FALSE]
     w.src_unit = apply(w.src, 2, function(x) x/sqrt(sum(x^2)))
-    # beta_unit=beta/sqrt(sum(beta^2))
-    #ensemble w via eigen values
-    
+
     if(ncol(w.src)!=1){
-      #ensemble w via eigen values
       B = X_all[[t]]%*%w.src_unit
       G = cor(B)
       w_weight = (eigen(G)$vectors[,1,drop=FALSE])^2
       w.src = w.src_unit%*%w_weight
     }
     
-
-    # glm.tar = glmnet(X_all[[t]],Y_all[[t]],family = 'gaussian',alpha=0)
-    # beta <- predict(glm.tar, s=0.05, type = 'coefficients')[-1]
-    # var = c(var(beta_unit),var(w.src))
-    # rho = as.numeric(cor(beta_unit, w.src))
     var = c(var(beta),var(w.src))
     rho = as.numeric(cor(beta, w.src))
     
-    ##############################
-    ###Proposed: 2D search
-    ##############################
     lam_range<-single_initial_pen_all[,t]
     lam_V = seq(lam_range[1], lam_range[2], length.out = 5) 
     eta_range<-rho * lam_V * sqrt(var[1]/var[2])
@@ -102,33 +91,6 @@ get_initial_penalty<-function(X_all,n_tis,single_initial_est_all,single_initial_
 
   return(list(penalty_initial=initial_pen,w_src=w_src))
 }
-
-
-#' @title TransTWAS method that integrates multiple external tissues' gene expression data to help improve the prediction in the target dataset.
-#' 
-#' @description
-#' Using TransTWAS method to borrow information from external GTEx tissus.
-#' Note that the function incoperates parallel computing to speed up the computation. 
-#' 
-#' @usage
-#'TransTWAS_output = TransTWAS(fold = 5, 
-#'                             n_tune = 5, 
-#'                             cores=n_cores,
-#'                             n_tis=n_tis,
-#'                             gene_name=gene_name,
-#'                             dir_geno=dir_geno,
-#'                             Y=gene_exp)
-#'                  
-#' @param fold The number of folds of cross-validation (CV)
-#' @param n_tune The number of candidate tuning parameters of the optimization function
-#' @param n_cores The number of cores used for parallel computing.
-#' @param Yt_tar The target tissue name the user want to iterate. Only one tissue name.
-#' @param Yt_ext The source tissue name vector. For example, if the source information comes from "Brain_Frontal_Cortex" and "Cells_EBV_transformed_lymphacytoes". Then the vector shoule c("Brain_Frontal_Cortex","Cells_EBV_transformed_lymphacytoes")
-#' @param gene_name The gene name under investigation.
-#' @param dir_geno The directory to attach a "bigSNP" from backing files. See https://cran.r-project.org/web/packages/bigsnpr/index.html for the detail.
-#' @param gene_exp The gene expression list. The first element of the list is the gene expression in the target tissue, the remaining element is the gene expression in the source tissues. Note that each element of the list is an matrix with two columns. The first column is the persion identifier (e.g., GTEx_1234) and second column is the corresponding gene expression. 
-#' 
-#' @return An calibrated (improved) gene expression imputation weight with information borrowed from other sources using the TransTWAS method. Note that 
 
 #Part of the code is modified from https://github.com/yiminghu/CTIMP/blob/master/main.R 
 TransTWAS = function(fold = 5, 
