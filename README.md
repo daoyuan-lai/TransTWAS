@@ -112,11 +112,13 @@ The function will return two files:
 
 ## Simulation
 
-The code for simulation in the manuscript is also attached: 
+The code for replicating Figures 2-4 in the manuscript is also attached:
 
-* `type1_err.R`
-* `power_and_exp_pred.R`
-* `step_1_simu.R`
+* `simu_power.R` (Figure 2)
+* `simu_type1_err.R` (Figure 3)
+* `step_1_simu.R` (Figure 4)
+
+We note that `simu_power.R` and `simu_type1_err.R` are modified from the simulation of [MR-JTI](https://github.com/gamazonlab/MR-JTI/tree/master/simulation), and `simu_step1.R` is designed based on [PUMICE](https://github.com/ckhunsr1/PUMICE).
 
 ## Contact
 
