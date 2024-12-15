@@ -4,7 +4,9 @@ TRANSfer Learning into TWAS framework (TransTWAS)
 
 ## About
 
-TransTWAS utilizes external tissues' information to predict cross-tissue gene expression through penalizing the angle between source estimate and target parameter. TransTWAS can adaptively aggregate multiple source estimates. The `R` package `Rcpp` was used to speed up the calculation.
+TransTWAS utilizes external tissues' information to predict cross-tissue gene expression through penalizing the angle between source estimate and target parameter. TransTWAS can adaptively aggregate multiple source estimates. The `R` package `Rcpp` was used to speed up the calculation. The workflow of TransTWAS is shown in the following diagram.
+
+![](./flowchart.png)
 
 ## Tutorial
 
@@ -107,3 +109,7 @@ The function will return two files:
 
 -   `gene_name.rds`: imputed weights.
 -   `GReX_gene_name.rds`: the GReX.
+
+##Contact
+
+For any issues regarding TransTWAS, please contact <dylai@connect.hku.hk>.
