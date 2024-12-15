@@ -1,6 +1,6 @@
 # TransTWAS
 
-TRANSfer Learning into TWAS framework (TransTWAS)
+TRANSfer Learning into TWAS framework (TransTWAS).
 
 ## About
 
@@ -109,6 +109,14 @@ The function will return two files:
 
 -   `gene_name.rds`: imputed weights.
 -   `GReX_gene_name.rds`: the GReX.
+
+## Simulation
+
+The code for simulation in the manuscript is also attached: 
+
+* `type1_err.R`
+* `power_and_exp_pred.R`
+* `step_1_simu.R`
 
 ## Contact
 
