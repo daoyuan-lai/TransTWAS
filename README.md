@@ -110,6 +110,6 @@ The function will return two files:
 -   `gene_name.rds`: imputed weights.
 -   `GReX_gene_name.rds`: the GReX.
 
-##Contact
+## Contact
 
 For any issues regarding TransTWAS, please contact <dylai@connect.hku.hk>.
