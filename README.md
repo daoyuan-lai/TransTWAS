@@ -69,7 +69,7 @@ x    [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8]
 [8,]    0    1    0    0    0    1    0    0
 ```
 
--   Response file (e.g., `/expression/ENSG12341234123/Y_Brain_Frontal_Cortex.txt`): each sub-folder of the `expression` folder contains the gene expression of each protein-coding gene (e.g., `ENSG12341234123`). The expression of that gene in tissue `XX_YY_ZZ` will be named as `Y_XX_YY_ZZ.txt` (e.g., `Y_Brain_Frontal_Cortex.txt`). The inputdataframe should contain two columns, the first the identifier of the individual, the second column will be the gene expression. A sample header is as follows:
+-   Response file (e.g., `/expression/ENSG12341234123/Y_Brain_Frontal_Cortex.txt`): each sub-folder of the `expression` folder contains the gene expression of each protein-coding gene (e.g., `ENSG12341234123`). The expression of that gene in tissue `XX_YY_ZZ` will be named as `Y_XX_YY_ZZ.txt` (e.g., `Y_Brain_Frontal_Cortex.txt`). The input dataframe should contain two columns, the first the identifier of the individual, the second column will be the gene expression. A sample header is as follows:
 
 ```         
 "GTEX-1117F" 0.347138342448021
