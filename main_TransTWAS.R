@@ -35,10 +35,10 @@ for(package.i in list.of.packages){
     )
 }
 
-source(".../transtwas_func.R")
-sourceCpp(file='.../transtwas_cpp.cpp')
+source(".../TransferTWAS_func.R")
+sourceCpp(file='.../TransferTWAS_cpp.cpp')
 
-TransTWAS(fold = 5, 
+TransferTWAS(fold = 5, 
           n_tune = 5, 
           n_cores=48,
           gene_name="ENSG00000169174.10",
